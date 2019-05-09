@@ -1,4 +1,4 @@
-package sample;
+package org.nanocode.evolutionApp;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -108,7 +108,7 @@ public class Evolution {
         for(i=1;i<ilepop;i++)
             if(pop.get(i).y>pop.get(m).y)    m=i;
 
-        //sprintf(str,"Ekstremum :\n\tx=%f\ty=%f\n\nZnalezione :\n\tx=%f\ty=%f\n\nRó?nica :\n\tdx=%f\tdy=%f\n\nKrok nr. %d",maxx,maxy,pop[m].x,pop[m].y,maxx-pop[m].x,maxy-pop[m].y,step);
+        //sprintf(str,"Ekstremum :\n\tx=%f\ty=%f\n\nZnalezione :\n\tx=%f\ty=%f\n\nRï¿½?nica :\n\tdx=%f\tdy=%f\n\nKrok nr. %d",maxx,maxy,pop[m].x,pop[m].y,maxx-pop[m].x,maxy-pop[m].y,step);
 
         return new Population(pop.get(m).x, pop.get(m).y);
     }

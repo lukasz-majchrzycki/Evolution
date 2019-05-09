@@ -1,4 +1,4 @@
-package sample;
+package org.nanocode.evolutionApp;
 
 public class FuncID {
     private int ID;

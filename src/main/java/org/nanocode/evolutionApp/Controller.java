@@ -1,4 +1,4 @@
-package sample;
+package org.nanocode.evolutionApp;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
