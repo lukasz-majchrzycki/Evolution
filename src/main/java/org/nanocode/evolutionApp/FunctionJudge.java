@@ -12,11 +12,9 @@ import static java.lang.Math.sin;
 public class FunctionJudge extends Judge<Individual> implements Comparator<Individual> {
     public final double X_RANGE = 10.0, Y_RANGE = 100.0;
     private int index;
-    private Random generator;
 
     public FunctionJudge(int index){
         this.index=index;
-        generator = new Random();
     }
 
     @Override
@@ -33,7 +31,7 @@ public class FunctionJudge extends Judge<Individual> implements Comparator<Indiv
         return resultValue(x);
     }
 
-    public double resultValue(double x, int index){
+    static public double resultValue(double x, int index){
 
         return functValue(index, x);
     }
@@ -42,8 +40,9 @@ public class FunctionJudge extends Judge<Individual> implements Comparator<Indiv
         return functValue(this.index, x);
     }
 
-    private double functValue(int i,double x){
+    static private double functValue(int i,double x){
         double y;
+        Random generator = new Random();
         switch(i)
         {
             case 0:
