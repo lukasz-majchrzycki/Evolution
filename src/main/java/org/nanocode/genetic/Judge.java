@@ -2,9 +2,15 @@ package org.nanocode.genetic;
 
 import jdk.jshell.spi.ExecutionControl;
 
-public abstract class Judge<E extends Individual> {
+import java.util.Comparator;
 
-    public int compare(E o1, E o2) throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("Method compare is not implemented");
+public abstract class Judge<E extends Individual> implements Comparator<E> {
+
+    @Override
+    public abstract int compare(E o1, E o2)  ;
+
+    public double resultValue(Individual o) throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("ResultValue method is not implemented");
     }
+
 }
