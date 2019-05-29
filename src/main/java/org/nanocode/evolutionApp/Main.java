@@ -13,11 +13,14 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root;
+        Scene scene;
         URL url = getClass().getResource("evolutionApp.fxml");
         root = FXMLLoader.load(url);
 
         primaryStage.setTitle("Evolution");
-        primaryStage.setScene(new Scene(root, 700, 600));
+        scene= new Scene(root, 700, 600);
+        scene.getStylesheets().add(getClass().getResource("graph.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.show();
 
     }
