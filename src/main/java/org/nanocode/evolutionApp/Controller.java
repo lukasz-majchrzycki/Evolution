@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
@@ -13,8 +12,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-
-    protected   Evolution functionEvolution = new Evolution(0);
     XYChart.Series<Double, Double> actualGraph = new XYChart.Series<>();
     XYChart.Series<Double, Double> popItems = new XYChart.Series<>();
 
@@ -29,9 +26,6 @@ public class Controller implements Initializable {
     public ComboBox<FuncID> comboBox;
     ObservableList<FuncID> funcNames = FXCollections.observableArrayList();
 
-    @FXML
-    public Canvas canvasGraph;
-    
     @Override
     public void initialize(URL location, ResourceBundle resources){
         funcNames.add(new FuncID(0, "f.dwukwadratowa + szum"));
@@ -82,18 +76,7 @@ public class Controller implements Initializable {
     }
 
     public void result(){
-        double maxx, maxy,j;
-        maxy=functionEvolution.funkcja(-functionEvolution.mx);
-        maxx=-functionEvolution.mx;
-        for(double i=-functionEvolution.mx-1;i<=functionEvolution.mx+1;i+=0.001)
-        {
-            j=functionEvolution.funkcja(i);
-            if(j>maxy) { maxy=j; maxx=i; }
-        }
-        Population maxRes = functionEvolution.maks();
-        AlertBox.display("Wynik", "Ekstremum funkcji: x="+maxx+" y="+
-                "\nZnalezione: x="+maxRes.x+" y="+maxRes.y+
-                "\nRóżnica: dx="+(maxx-maxRes.x)+" dy="+(maxy-maxRes.y));
+
     }
 
 }

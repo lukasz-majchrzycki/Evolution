@@ -58,8 +58,6 @@ public class FunctionProbe implements Individual {
 
     protected int[] maskSieve(){
         Random generator = new Random();
-        double normal;
-        int div;
         int[] mask = new int[2];
         long n=0;
 

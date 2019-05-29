@@ -10,7 +10,7 @@ import static java.lang.Math.*;
 import static java.lang.Math.sin;
 
 public class FunctionJudge extends Judge<Individual> implements Comparator<Individual> {
-    public final double X_RANGE = 10.0, Y_RANGE = 100.0;
+    public final double X_RANGE = 10.0;
     private int index;
 
     public FunctionJudge(int index){

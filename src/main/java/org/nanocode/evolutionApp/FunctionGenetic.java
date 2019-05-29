@@ -68,20 +68,6 @@ public class FunctionGenetic {
         }while(childPop.size()<pop.size());
 
         pop=childPop;
-
-        double min=judge.valueOfChromosome(childPop.get(0)), max=min;
-        double sum=0, best=judge.resultValue(childPop.get(0));
-        double x,y;
-
-        for (int i = 0; i < childPop.size(); i++) {
-            x=judge.valueOfChromosome(childPop.get(i));
-            y=judge.resultValue(childPop.get(i));
-
-            if(min>x) min=x;
-            else if (max<x) max=x;
-
-            if(best<y) best=y;
-        }
     }
 
     public void mutation(){
