@@ -10,14 +10,12 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
     protected   Evolution functionEvolution = new Evolution(0);
-    ArrayList<  XYChart.Series<Double, Double>  >  funcGraph = new ArrayList<>();
-    XYChart.Series<Double, Double> actualGraph;
+    XYChart.Series<Double, Double> actualGraph = new XYChart.Series<>();
     XYChart.Series<Double, Double> popItems = new XYChart.Series<>();
 
     FunctionGenetic functionGenetic;
@@ -47,26 +45,23 @@ public class Controller implements Initializable {
         comboBox.setValue(funcNames.get(0));
 
         functionGenetic = new FunctionGenetic(populationSize,0);
-        initFunctionGraph();
+        initFunctionGraph(0);
 
-        actualGraph=funcGraph.get(0);
         lineChart.getData().addAll(actualGraph,popItems);
     }
 
     public void changedFunctionName(){
         functionGenetic = new FunctionGenetic(populationSize,comboBox.getValue().getID());
-        actualGraph.getData().clear();
+        initFunctionGraph(comboBox.getValue().getID());
         popItems.getData().clear();
-        actualGraph.setData(funcGraph.get(comboBox.getValue().getID()).getData()  );
+        initFunctionGraph(comboBox.getValue().getID());
     }
 
-    public void initFunctionGraph(  ){
-        for (int i = 0; i < 5; i++) {
-            funcGraph.add(new XYChart.Series<>());
+    public void initFunctionGraph(int i  ){
+       actualGraph.getData().clear();
 
-            for (Double j = -functionGenetic.judge.X_RANGE; j <= functionGenetic.judge.X_RANGE; j += 0.02) {
-                funcGraph.get(i).getData().add(new XYChart.Data<>(  j, functionGenetic.judge.resultValue(j,i))  );
-            }
+        for (Double j = -functionGenetic.judge.X_RANGE; j <= functionGenetic.judge.X_RANGE; j += 0.02) {
+            actualGraph.getData().add(new XYChart.Data<>(  j, FunctionJudge.resultValue(j,i))  );
         }
     }
 
