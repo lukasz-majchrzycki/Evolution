@@ -15,10 +15,14 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
-    protected Evolution functionEvolution = new Evolution(0);
-    GraphicsContext gc;
-    ArrayList<Population> funcGraph = new ArrayList<>();
+    protected   Evolution functionEvolution = new Evolution(0);
+    ArrayList<  XYChart.Series<Double, Double>  >  funcGraph = new ArrayList<>();
+    XYChart.Series<Double, Double> actualGraph;
+    XYChart.Series<Double, Double> popItems = new XYChart.Series<>();
 
+    FunctionGenetic functionGenetic;
+
+    public static final int populationSize=20;
 
     @FXML
     private LineChart<Double, Double> lineChart;
@@ -40,49 +44,46 @@ public class Controller implements Initializable {
 
         comboBox.setItems(funcNames);
         comboBox.setPromptText(funcNames.get(0).toString());
+        comboBox.setValue(funcNames.get(0));
 
-        gc = canvasGraph.getGraphicsContext2D();
-
-        //gc.setFill(Color.BLACK);
-        //gc.fillRect(xmin  , ymin, w   , h);
-        functionEvolution.first();
-        gc.setStroke(Color.BLACK);
+        functionGenetic = new FunctionGenetic(populationSize,0);
         initFunctionGraph();
-        paint();
+
+        actualGraph=funcGraph.get(0);
+        lineChart.getData().addAll(actualGraph,popItems);
     }
 
     public void changedFunctionName(){
-        functionEvolution = new Evolution(comboBox.getValue().getID());
+        functionGenetic = new FunctionGenetic(populationSize,comboBox.getValue().getID());
+        actualGraph.getData().clear();
+        popItems.getData().clear();
+        actualGraph.setData(funcGraph.get(comboBox.getValue().getID()).getData()  );
     }
 
-    public void initFunctionGraph(){
-        for(double i=-functionEvolution.mx;i<functionEvolution.mx;i+=0.1){
-            funcGraph.add(new Population(i,functionEvolution.funkcja(i)));
+    public void initFunctionGraph(  ){
+        for (int i = 0; i < 5; i++) {
+            funcGraph.add(new XYChart.Series<>());
+
+            for (Double j = -functionGenetic.judge.X_RANGE; j <= functionGenetic.judge.X_RANGE; j += 0.02) {
+                funcGraph.get(i).getData().add(new XYChart.Data<>(  j, functionGenetic.judge.resultValue(j,i))  );
+            }
         }
     }
 
-    public double transformX(double x){
-        return ((x/2*functionEvolution.mx)+0.5)*(w-xmin)+xmin;
-    }
-
-    public double transformY(double y){
-        return ((y/2*functionEvolution.my)+0.5)*(h-ymin)+ymin;
-    }
-
-    public void paint(){
-        gc.moveTo(transformX(funcGraph.get(0).x),transformY(funcGraph.get(0).y));
-        for (int i = 1; i <funcGraph.size() ; i++) {
-            gc.lineTo(transformX(funcGraph.get(i).x),transformY(funcGraph.get(i).y));
-        }
+    public void Reset(){
+        changedFunctionName();
     }
 
     public void step(){
-        functionEvolution.krok();
-    }
+
+        popItems.getData().clear();
+        functionGenetic.evolve();
+        popItems.setData(functionGenetic.getPopItems().getData());
+       }
 
     public void step10(){
-        for(int i=0;1<10;i++)
-           functionEvolution.krok();
+        for(int i=0;i<10;i++)
+           step();
     }
 
     public void result(){
