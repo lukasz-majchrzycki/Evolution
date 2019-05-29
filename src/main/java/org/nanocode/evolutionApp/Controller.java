@@ -5,9 +5,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
-import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,7 +19,9 @@ public class Controller implements Initializable {
     GraphicsContext gc;
     ArrayList<Population> funcGraph = new ArrayList<>();
 
-    final static int xmin = 50, w = 400, ymin = 50, h=400;
+
+    @FXML
+    private LineChart<Double, Double> lineChart;
 
     @FXML
     public ComboBox<FuncID> comboBox;
