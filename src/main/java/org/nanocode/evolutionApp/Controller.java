@@ -1,5 +1,7 @@
 package org.nanocode.evolutionApp;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -7,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,6 +17,8 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     XYChart.Series<Double, Double> actualGraph = new XYChart.Series<>();
     XYChart.Series<Double, Double> popItems = new XYChart.Series<>();
+    Timeline timer;
+    boolean animOn=false;
 
     FunctionGenetic functionGenetic;
 
@@ -42,6 +47,7 @@ public class Controller implements Initializable {
         initFunctionGraph(0);
 
         lineChart.getData().addAll(actualGraph,popItems);
+
     }
 
     public void changedFunctionName(){
@@ -77,6 +83,21 @@ public class Controller implements Initializable {
 
     public void result(){
 
+    }
+
+    public void animate(){
+        if(animOn) {
+            animOn=false;
+            timer.stop();
+        }
+
+        else {
+            animOn=true;
+            timer = new Timeline(new KeyFrame( Duration.millis(1000), e->step())  );
+            timer.setCycleCount(Timeline.INDEFINITE);
+            timer.play();
+
+        }
     }
 
 }

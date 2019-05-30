@@ -16,7 +16,7 @@
    <children>
       <Button fx:id="step1Button" alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#step" text="Ruch +1" textAlignment="CENTER" />
       <Button fx:id="step10Button" alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#step10" text="Ruch +10" textAlignment="CENTER" GridPane.rowIndex="1" />
-      <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" text="Animuj" textAlignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+      <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#animate" text="Animuj" textAlignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
       <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#result" text="Wynik" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
       <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" text="Wartości" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
       <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#Reset" text="Reset" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
