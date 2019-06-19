@@ -10,13 +10,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<?import javafx.scene.chart.ScatterChart?>
 <GridPane hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.nanocode.evolutionApp.Controller">
 
    <children>
       <Button fx:id="step1Button" alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#step" text="Ruch +1" textAlignment="CENTER" />
       <Button fx:id="step10Button" alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#step10" text="Ruch +10" textAlignment="CENTER" GridPane.rowIndex="1" />
-      <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#animate" text="Animuj" textAlignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+      <Button fx:id="animButton" alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#animate" text="Animuj" textAlignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
       <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#result" text="Wynik" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
       <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" text="Wartości" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
       <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#Reset" text="Reset" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP" />

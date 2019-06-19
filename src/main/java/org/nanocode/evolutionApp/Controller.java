@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.util.Duration;
 
@@ -26,6 +27,9 @@ public class Controller implements Initializable {
 
     @FXML
     private LineChart<Double, Double> lineChart;
+
+    @FXML
+    private Button animButton;
 
     @FXML
     public ComboBox<FuncID> comboBox;
@@ -47,7 +51,6 @@ public class Controller implements Initializable {
         initFunctionGraph(0);
 
         lineChart.getData().addAll(actualGraph,popItems);
-
     }
 
     public void changedFunctionName(){
@@ -89,10 +92,12 @@ public class Controller implements Initializable {
         if(animOn) {
             animOn=false;
             timer.stop();
+            animButton.getStyleClass().removeAll("button-on");
         }
 
         else {
             animOn=true;
+            animButton.getStyleClass().add("button-on");
             timer = new Timeline(new KeyFrame( Duration.millis(1000), e->step())  );
             timer.setCycleCount(Timeline.INDEFINITE);
             timer.play();
