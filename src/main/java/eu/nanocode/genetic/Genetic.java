@@ -1,4 +1,4 @@
-package org.nanocode.genetic;
+package eu.nanocode.genetic;
 
 import java.util.ArrayList;
 import java.util.Comparator;

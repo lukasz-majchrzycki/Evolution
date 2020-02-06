@@ -1,7 +1,7 @@
-package org.nanocode.evolutionApp;
+package eu.nanocode.evolutionApp;
 
-import org.nanocode.genetic.Individual;
-import org.nanocode.genetic.Judge;
+import eu.nanocode.genetic.Individual;
+import eu.nanocode.genetic.Judge;
 
 import java.util.Comparator;
 import java.util.Random;

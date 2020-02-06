@@ -1,4 +1,4 @@
-package org.nanocode.genetic;
+package eu.nanocode.genetic;
 
 public interface Individual {
     int[] getChromosome();

@@ -1,5 +1,5 @@
-package org.nanocode.evolutionApp;
-import org.nanocode.genetic.Individual;
+package eu.nanocode.evolutionApp;
+import eu.nanocode.genetic.Individual;
 
 import java.util.Random;
 
