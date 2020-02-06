@@ -3,7 +3,6 @@ package org.nanocode.evolutionApp;
 import javafx.scene.chart.XYChart;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 
 public class FunctionGenetic {
@@ -14,7 +13,7 @@ public class FunctionGenetic {
     private ArrayList<Integer> probability;
 
     private ArrayList<FunctionProbe> pop = new ArrayList<>();
-    public FunctionJudge judge;
+    protected FunctionJudge judge;
 
     public FunctionGenetic(int size, int index){
         judge = new FunctionJudge(index);
@@ -49,12 +48,12 @@ public class FunctionGenetic {
         return 0;
     }
 
-    public void evolve(){
+    protected void evolve(){
         int parent1, parent2;
         FunctionProbe child;
         ArrayList<FunctionProbe> childPop = new ArrayList<>();
 
-        Collections.sort(pop, judge);
+        pop.sort(judge);
 
         do {
             parent1 = rndIndividual();
@@ -73,10 +72,4 @@ public class FunctionGenetic {
     public void mutation(){
 
     }
-
-    public String result(){
-        return new String("");
-    }
-
-
 }

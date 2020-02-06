@@ -16,12 +16,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-    XYChart.Series<Double, Double> actualGraph = new XYChart.Series<>();
-    XYChart.Series<Double, Double> popItems = new XYChart.Series<>();
-    Timeline timer;
-    boolean animOn=false;
+    private XYChart.Series<Double, Double> actualGraph = new XYChart.Series<>();
+    private XYChart.Series<Double, Double> popItems = new XYChart.Series<>();
+    private Timeline timer;
+    private boolean animOn=false;
 
-    FunctionGenetic functionGenetic;
+    private FunctionGenetic functionGenetic;
 
     public static final int populationSize=20;
 
@@ -33,7 +33,7 @@ public class Controller implements Initializable {
 
     @FXML
     public ComboBox<FuncID> comboBox;
-    ObservableList<FuncID> funcNames = FXCollections.observableArrayList();
+    private ObservableList<FuncID> funcNames = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -61,10 +61,10 @@ public class Controller implements Initializable {
         initFunctionGraph(comboBox.getValue().getID());
     }
 
-    public void initFunctionGraph(int i  ){
+    private void initFunctionGraph(int i  ){
        actualGraph.getData().clear();
 
-        for (Double j = -functionGenetic.judge.X_RANGE; j <= functionGenetic.judge.X_RANGE; j += 0.02) {
+        for (double j = -functionGenetic.judge.X_RANGE; j <= functionGenetic.judge.X_RANGE; j += 0.02) {
             actualGraph.getData().add(new XYChart.Data<>(  j, FunctionJudge.resultValue(j,i))  );
         }
     }
