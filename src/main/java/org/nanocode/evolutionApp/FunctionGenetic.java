@@ -9,7 +9,8 @@ public class FunctionGenetic {
 
     private Random generator = new Random();
 
-    public final int mutationLevel=5;       //from 0 to 256
+    public final int mutationLevel=10;       //from 0 to 256
+    public final int mutationRange=256;
     private ArrayList<Integer> probability;
 
     private ArrayList<FunctionProbe> pop = new ArrayList<>();
@@ -63,13 +64,18 @@ public class FunctionGenetic {
             } while (parent1 == parent2);
 
             child = new FunctionProbe(pop.get(parent1), pop.get(parent2));
+            child = mutation(child);
             childPop.add(child);
         }while(childPop.size()<pop.size());
 
         pop=childPop;
     }
 
-    public void mutation(){
-
+    public FunctionProbe mutation(FunctionProbe individual){
+        int rnd=Math.abs(generator.nextInt()%mutationRange);
+        if(rnd < mutationLevel){
+            individual = new FunctionProbe(individual, new FunctionProbe());
+        }
+        return individual;
     }
 }
