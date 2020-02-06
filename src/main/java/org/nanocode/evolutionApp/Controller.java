@@ -51,12 +51,13 @@ public class Controller implements Initializable {
         initFunctionGraph(0);
 
         lineChart.getData().addAll(actualGraph,popItems);
+        popItems.setData(functionGenetic.getPopItems().getData());
     }
 
     public void changedFunctionName(){
         functionGenetic = new FunctionGenetic(populationSize,comboBox.getValue().getID());
-        initFunctionGraph(comboBox.getValue().getID());
         popItems.getData().clear();
+        popItems.setData(functionGenetic.getPopItems().getData());
         initFunctionGraph(comboBox.getValue().getID());
     }
 
@@ -85,7 +86,32 @@ public class Controller implements Initializable {
     }
 
     public void result(){
+        double maxx, maxy,j, tmp;
+        double popXmax, popYmax;
+        int i=comboBox.getValue().getID();
+        maxx=-functionGenetic.judge.X_RANGE;
+        maxy=FunctionJudge.resultValue(maxx, i);
+        for (j = -functionGenetic.judge.X_RANGE; j <= functionGenetic.judge.X_RANGE; j += 0.02) {
+            tmp=FunctionJudge.resultValue(j, i);
+            if(tmp>maxy){
+                maxx=j;
+                maxy=tmp;
+            }
+        }
+        popYmax=Double.POSITIVE_INFINITY;
+        popXmax=Double.NEGATIVE_INFINITY;
+        for (XYChart.Data<Double, Double> x : functionGenetic.getPopItems().getData()){
+           if( Math.abs(x.getYValue()-maxy) < Math.abs(popYmax-maxy) ){
+               popYmax = x.getYValue();
+               popXmax = x.getXValue();
+           }
+        }
 
+                AlertBox.display("Wynik", String.format(
+                        "Ekstremum funkcji:%nx=%.2f%ny=%.2f" +
+                         "%n%nZnalezione:%nx=%.2f%ny=%.2f" +
+                        "%n%nRóżnica:%ndx=%.2f%ndy=%.2f",
+                        maxx,maxy,popXmax,popYmax,(maxx-popXmax), (maxy-popYmax) ) );
     }
 
     public void animate(){
@@ -103,6 +129,14 @@ public class Controller implements Initializable {
             timer.play();
 
         }
+    }
+
+    public void values(){
+        StringBuilder str = new StringBuilder();
+        for (XYChart.Data<Double, Double> x : functionGenetic.getPopItems().getData()){
+            str.append(String.format("x=%.2f\tx=%.2f\t%n",x.getXValue(),x.getYValue()));
+        }
+        AlertBox.display("Osobniki", str.toString());
     }
 
 }
