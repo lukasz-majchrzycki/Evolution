@@ -37,11 +37,11 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        funcNames.add(new FuncID(0, "f.dwukwadratowa + szum"));
-        funcNames.add(new FuncID(1, "sin. modulowana"));
-        funcNames.add(new FuncID(2, "f.piłokształtna"));
-        funcNames.add(new FuncID(3, "pik1"));
-        funcNames.add(new FuncID(4, "pik2"));
+        funcNames.add(new FuncID(0, "two-square function with noise"));
+        funcNames.add(new FuncID(1, "modulated sinus"));
+        funcNames.add(new FuncID(2, "sawtooth function"));
+        funcNames.add(new FuncID(3, "peak 1"));
+        funcNames.add(new FuncID(4, "peak 2"));
 
         comboBox.setItems(funcNames);
         comboBox.setPromptText(funcNames.get(0).toString());
@@ -107,10 +107,10 @@ public class Controller implements Initializable {
            }
         }
 
-                AlertBox.display("Wynik", String.format(
-                        "Ekstremum funkcji:%nx=%.2f%ny=%.2f" +
-                         "%n%nZnalezione:%nx=%.2f%ny=%.2f" +
-                        "%n%nRóżnica:%ndx=%.2f%ndy=%.2f",
+                AlertBox.display("Result", String.format(
+                        "Extreme of function:%nx=%.2f%ny=%.2f" +
+                         "%n%nFound:%nx=%.2f%ny=%.2f" +
+                        "%n%nDifference:%ndx=%.2f%ndy=%.2f",
                         maxx,maxy,popXmax,popYmax,(maxx-popXmax), (maxy-popYmax) ) );
     }
 
@@ -136,7 +136,7 @@ public class Controller implements Initializable {
         for (XYChart.Data<Double, Double> x : functionGenetic.getPopItems().getData()){
             str.append(String.format("x=%.2f\tx=%.2f\t%n",x.getXValue(),x.getYValue()));
         }
-        AlertBox.display("Osobniki", str.toString());
+        AlertBox.display("Individuals", str.toString());
     }
 
 }

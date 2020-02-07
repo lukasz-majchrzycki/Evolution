@@ -13,11 +13,11 @@
 <GridPane hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.nanocode.evolutionApp.Controller">
 
    <children>
-      <Button fx:id="step1Button" alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#step" text="Ruch +1" textAlignment="CENTER" />
-      <Button fx:id="step10Button" alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#step10" text="Ruch +10" textAlignment="CENTER" GridPane.rowIndex="1" />
-      <Button fx:id="animButton" alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#animate" text="Animuj" textAlignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-      <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#result" text="Wynik" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
-      <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#values" text="Wartości" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+      <Button fx:id="step1Button" alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#step" text="Step +1" textAlignment="CENTER" />
+      <Button fx:id="step10Button" alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#step10" text="Step +10" textAlignment="CENTER" GridPane.rowIndex="1" />
+      <Button fx:id="animButton" alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#animate" text="Animate" textAlignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+      <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#result" text="Result" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
+      <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#values" text="Values" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
       <Button alignment="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#Reset" text="Reset" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP" />
       <ComboBox fx:id="comboBox" onAction="#changedFunctionName" prefWidth="300.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
       <Canvas fx:id="canvasGraph" height="500.0" width="500.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
