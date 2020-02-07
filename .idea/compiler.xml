@@ -21,7 +21,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Evolution" target="11" />
-      <module name="EvolutionApp" target="12" />
+      <module name="EvolutionApp" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

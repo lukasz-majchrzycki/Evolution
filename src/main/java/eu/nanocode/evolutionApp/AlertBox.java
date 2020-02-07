@@ -1,4 +1,4 @@
-package org.nanocode.evolutionApp;
+package eu.nanocode.evolutionApp;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
